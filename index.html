@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Queries</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        padding: 20px;
+        width: 70%;
+        height: 100vh;
+        justify-content: center;
+        margin: auto;
+      }
+
+      .div-1 {
+        color: white;
+        padding: 20px;
+      }
+
+      .div-2 {
+        padding: 20px;
+      }
+
+      .p-text {
+        background: hsl(248, 32%, 49%);
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        margin: 20px 0;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .frm {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .frm-1 {
+        margin-bottom: 10px;
+        padding-bottom: 20px;
+      }
+
+      input {
+        border: grey 2px solid;
+        border-radius: 5px;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        width: 100%;
+        padding: 10px;
+      }
+
+      small {
+        position: relative;
+        top: 0px;
+        right: -200px;
+        color: hsl(0, 100%, 74%);
+        width: max-content;
+        visibility: hidden;
+      }
+
+      .btn {
+        width: 100%;
+        cursor: pointer;
+        padding: 10px;
+        background: hsl(154, 59%, 51%);
+        border: none;
+        margin: 20px 0;
+      }
+
+      .btn p {
+        font-weight: bold;
+        color: white;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+      }
+
+      .sp {
+        font-weight: bold;
+      }
+
+      .sp-ft {
+        font-weight: bold;
+        color: hsl(0, 100%, 74%);
+      }
+
+      .p-3 {
+        font-size: 12px;
+        text-align: center;
+        color: hsl(246, 25%, 77%);
+      }
+
+      .frm-1 i {
+        color: hsl(0, 100%, 74%);
+        position: relative;
+        top: -25px;
+        right: -350px;
+        visibility: hidden;
+      }
+
+      .ib.error input {
+        border: hsl(0, 100%, 74%) 2px solid;
+      }
+
+      .ib.success input {
+        border: rgb(104, 249, 104) 2px solid;
+      }
+
+      .ib.error .fa-solid {
+        visibility: visible;
+      }
+
+      .ib.error small {
+        visibility: visible;
+      }
+
+      @media (max-width: 705px) {
+        body {
+          background: url(/img/bg-intro-mobile.png) hsl(0, 100%, 74%);
+        }
+
+        h1 {
+          padding-bottom: 20px;
+        }
+      }
+
+      @media (min-width: 706px) {
+        body {
+          background: url(/img/bg-intro-desktop.png) hsl(0, 100%, 74%);
+        }
+
+        main {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .div-1 {
+          width: 50%;
+        }
+
+        .div-1 h1 {
+          padding: 20px 0;
+          font-weight: 700;
+        }
+
+        .div-2 {
+          width: 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <div class="div-1">
+        <h1>Learn to code by watching others</h1>
+        <p>
+          See how experienced develpers solve problems in real-time. watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+      </div>
+      <div class="div-2">
+        <div class="p-text">
+          <p>
+            <span class="sp">Try it free 7 days </span> then $20/mo, thereafter
+          </p>
+        </div>
+        <div class="frm-1">
+          <form id="form" class="frm">
+            <div class="lb-1 ib form-control">
+              <input type="text" placeholder="First Name" id="name" /><i
+                class="fa-solid fa-circle-exclamation"
+              ></i
+              ><small>error message</small>
+            </div>
+            <div class="lb-2 ib form-control">
+              <input type="text" placeholder="Last Name" id="name2" /><i
+                class="fa-solid fa-circle-exclamation"
+              ></i
+              ><small>error message</small>
+            </div>
+            <div class="lb-3 ib form-control">
+              <input type="email" placeholder="Email Address" id="email" /><i
+                class="fa-solid fa-circle-exclamation"
+              ></i
+              ><small>error message</small>
+            </div>
+            <div class="lb-4 ib form-control">
+              <input type="password" placeholder="Password" id="password" /><i
+                class="fa-solid fa-circle-exclamation"
+              ></i
+              ><small>error message</small>
+            </div>
+            <button class="btn" type="submit">
+              <p>CLAIM YOUR FREE TRIAL</p>
+            </button>
+            <p class="p-3">
+              By clicking the button you are agreeing to our
+              <span class="sp-ft"> Terms of Service</span>
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
