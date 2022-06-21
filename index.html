@@ -47,13 +47,13 @@
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
       }
 
-      .frm {
+      .form {
         background: white;
         border-radius: 10px;
         padding: 20px;
         width: 100%;
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-        position: relative;
+        /* position: relative; */
       }
 
       .frm-1 {
@@ -71,10 +71,10 @@
         padding: 10px;
       }
 
-      small {
-        position: relative;
-        top: 0px;
-        right: -200px;
+      .form-control small {
+        /* position: relative; */
+        /* top: 0px;
+        right: -200px; */
         color: hsl(0, 100%, 74%);
         width: max-content;
         visibility: hidden;
@@ -114,31 +114,31 @@
         color: hsl(246, 25%, 77%);
       }
 
-      .frm-1 i {
+      .form-control i {
         color: hsl(0, 100%, 74%);
-        position: relative;
+        /* position: relative;
         top: -25px;
-        right: -350px;
+        right: -350px;*/
         visibility: hidden;
       }
 
-      .ib.error input {
+      .form-control.error input {
         border: hsl(0, 100%, 74%) 2px solid;
       }
 
-      .ib.success input {
+      .form-control.success input {
         border: rgb(104, 249, 104) 2px solid;
       }
 
-      .ib.error .fa-solid {
+      .form-control.error .fa-solid {
         visibility: visible;
       }
 
-      .ib.error small {
+      .form-control.error small {
         visibility: visible;
       }
 
-      @media (max-width: 705px) {
+      @media (max-width: 863px) {
         body {
           background: url(/img/bg-intro-mobile.png) hsl(0, 100%, 74%);
         }
@@ -146,9 +146,25 @@
         h1 {
           padding-bottom: 20px;
         }
+
+        .form-control {
+          position: relative;
+          padding: 10px;
+        }
+
+        .form-control i {
+          position: absolute;
+          top: 25px;
+          right: 20px;
+        }
+
+        .form-control small {
+          position: absolute;
+          right: 20px;
+        }
       }
 
-      @media (min-width: 706px) {
+      @media (min-width: 864px) {
         body {
           background: url(/img/bg-intro-desktop.png) hsl(0, 100%, 74%);
         }
@@ -171,6 +187,22 @@
         .div-2 {
           width: 50%;
         }
+
+        .form-control {
+          position: relative;
+          padding: 10px;
+        }
+
+        .form-control i {
+          position: absolute;
+          top: 25px;
+          right: 20px;
+        }
+
+        .form-control small {
+          position: absolute;
+          right: 20px;
+        }
       }
     </style>
   </head>
@@ -191,9 +223,9 @@
           </p>
         </div>
         <div class="frm-1">
-          <form id="form" class="frm">
+          <form id="form" class="form">
             <div class="lb-1 ib form-control">
-              <input type="text" placeholder="First Name" id="name" /><i
+              <input type="text" placeholder="First Name" id="name1" /><i
                 class="fa-solid fa-circle-exclamation"
               ></i
               ><small>error message</small>
@@ -227,5 +259,59 @@
         </div>
       </div>
     </main>
+    <script>
+      const form = document.getElementById("form");
+      const name1 = document.getElementById("name1");
+      const name2 = document.getElementById("name2");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+
+      function showError(input, message) {
+        const formControl = input.parentElement;
+        formControl.className = "form-control error";
+        const small = formControl.querySelector("small");
+        small.innerText = message;
+      }
+
+      function showSuccess(input, message) {
+        const formControl = input.parentElement;
+        formControl.className = "form-control success";
+      }
+
+      function isEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ 
+        return re.test(String(email).toLowerCase())
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (name1.value === "") {
+          showError(name1, "First Name cannot be empty");
+        } else {
+          showSuccess(name1);
+        }
+
+        if (name2.value === "") {
+          showError(name2, "Last Name cannot be empty");
+        } else {
+          showSuccess(name2);
+        }
+
+        if (email.value === "") {
+          showError(email, "Email cannot be blank");
+        } else if (!isEmail(email.value)) {
+          showError(email, "Not a valid email");
+        } else {
+          showSuccess(email);
+        }
+
+        if (password.value === "") {
+          showError(password, "Password cannot be blank");
+        } else {
+          showSuccess(password);
+        }
+      });
+    </script>
   </body>
 </html>
